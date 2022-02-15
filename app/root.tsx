@@ -8,6 +8,8 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 
+require('dotenv').config()
+
 export const meta: MetaFunction = () => {
   return { title: "New Remix App" };
 };

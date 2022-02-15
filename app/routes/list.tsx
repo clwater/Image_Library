@@ -24,7 +24,7 @@ let client = new OSS({
 });
 
 
-client.useBucket('Bucket');
+// client.useBucket('Bucket');
 
 async function listDir(dir: string) {
   const result = await client.list({
