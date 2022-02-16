@@ -1,32 +1,42 @@
 {
-  "version": "a00adebf",
+  "version": "e001b3be",
   "entry": {
-    "module": "/build/entry.client-2J7QUANN.js",
+    "module": "/build/entry.client-Q5GC5EZF.js",
     "imports": [
-      "/build/_shared/chunk-LAE5MDMM.js",
-      "/build/_shared/chunk-E7VMOUYL.js"
+      "/build/_shared/chunk-3VIA5FET.js",
+      "/build/_shared/chunk-5OQ3QANQ.js"
     ]
   },
   "routes": {
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-QEZ6VM7C.js",
+      "module": "/build/root-LU2DJVTN.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     },
-    "routes/index": {
-      "id": "routes/index",
+    "routes/list": {
+      "id": "routes/list",
       "parentId": "root",
+      "path": "list",
+      "module": "/build/routes/list-LJXRRDK5.js",
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/list/index": {
+      "id": "routes/list/index",
+      "parentId": "routes/list",
       "index": true,
-      "module": "/build/routes/index-SES5SHIW.js",
+      "module": "/build/routes/list/index-RU55AZXB.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-A00ADEBF.js"
+  "url": "/build/manifest-E001B3BE.js"
 }
