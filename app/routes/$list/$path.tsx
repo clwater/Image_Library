@@ -2,7 +2,7 @@ import type { LoaderFunction, ActionFunction } from "remix";
 import { useLoaderData, redirect } from "remix";
 import { Outlet } from "remix";
 
-import {listDir, upImageUrl} from "../utils/oss.server"
+import {listDir, upImageUrl} from "../../utils/oss.server"
 
 type OSSData = {
   ShowDir: string[]
@@ -18,12 +18,23 @@ type OSSData = {
 
 
 
-export let loader: LoaderFunction = async () => {
+export let loader: LoaderFunction = async ({ params }) => {
+
+  if(params.list  != process.env.libraryPath){
+    return redirect("/")
+  }
+  console.log(params);
+  
+
+
+  console.log(params.path);
+  
+
   let ossListData = await listDir(
     process.env.accessKeyId as string, 
     process.env.accessKeySecret as string, 
     process.env.bucket as string,
-     "")
+    params.path as string)
 
   let data: OSSData = {
     ShowDir: ossListData.prefixes,

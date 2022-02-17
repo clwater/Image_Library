@@ -1,5 +1,5 @@
 {
-  "version": "0a958e7e",
+  "version": "c92b4b7d",
   "entry": {
     "module": "/build/entry.client-ZUEGV46F.js",
     "imports": [
@@ -17,26 +17,27 @@
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     },
-    "routes/list": {
-      "id": "routes/list",
+    "routes/$list/$path": {
+      "id": "routes/$list/$path",
       "parentId": "root",
-      "path": "list",
-      "module": "/build/routes/list-OYNGYJUW.js",
+      "path": ":list/:path",
+      "module": "/build/routes/$list/$path-HMTWRMGS.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     },
-    "routes/list/index": {
-      "id": "routes/list/index",
-      "parentId": "routes/list",
+    "routes/$list/index": {
+      "id": "routes/$list/index",
+      "parentId": "root",
+      "path": ":list",
       "index": true,
-      "module": "/build/routes/list/index-AKUV5MF3.js",
+      "module": "/build/routes/$list/index-VP2B5RPJ.js",
       "hasAction": false,
-      "hasLoader": false,
+      "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-0A958E7E.js"
+  "url": "/build/manifest-C92B4B7D.js"
 }
