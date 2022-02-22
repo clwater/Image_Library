@@ -1,5 +1,5 @@
 {
-  "version": "c92b4b7d",
+  "version": "fe17ca06",
   "entry": {
     "module": "/build/entry.client-ZUEGV46F.js",
     "imports": [
@@ -21,7 +21,7 @@
       "id": "routes/$list/$path",
       "parentId": "root",
       "path": ":list/:path",
-      "module": "/build/routes/$list/$path-HMTWRMGS.js",
+      "module": "/build/routes/$list/$path-MDIGJZRJ.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -39,5 +39,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-C92B4B7D.js"
+  "url": "/build/manifest-FE17CA06.js"
 }

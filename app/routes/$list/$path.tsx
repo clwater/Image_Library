@@ -14,21 +14,20 @@ type OSSData = {
   accessKeyId: string
   accessKeySecret: string
   bucket: string
+  path: string
 }
 
 
 
 export let loader: LoaderFunction = async ({ params }) => {
 
+  //判断是否有权
   if(params.list  != process.env.libraryPath){
     return redirect("/")
   }
-  console.log(params);
-  
+  // console.log(params);
+  // console.log(params.path);
 
-
-  console.log(params.path);
-  
 
   let ossListData = await listDir(
     process.env.accessKeyId as string, 
@@ -42,7 +41,8 @@ export let loader: LoaderFunction = async ({ params }) => {
     url: "",
     accessKeyId: process.env.accessKeyId as string,
     accessKeySecret: process.env.accessKeySecret as string,
-    bucket: process.env.bucket as string
+    bucket: process.env.bucket as string,
+    path: params.path as string
   };
 
   return data;
@@ -57,9 +57,10 @@ export let action: ActionFunction = async ({
   let accessKeyId = form.get("_accessKeyId") as string
   let accessKeySecret = form.get("_accessKeySecret") as string
   let bucket = form.get("_bucket") as string
-  upImageUrl(accessKeyId, accessKeySecret, bucket, url);
+  let path = form.get("_path") as string
+  await upImageUrl(accessKeyId, accessKeySecret, bucket, url, path);
 
-  return redirect("/list");
+  return null;
 };
 
 export default function List() {
@@ -99,6 +100,11 @@ export default function List() {
           type="hidden"
           name="_bucket"
           value={data.bucket}
+        />
+        <input
+          type="hidden"
+          name="_path"
+          value={data.path}
         />
         <label>
             Url:{" "}

@@ -2,6 +2,7 @@ let OSS = require('ali-oss');
 
 const fs = require("fs");
 const urllib = require("urllib");
+const crypto = require('crypto');
 
 let client: any = null
 
@@ -34,12 +35,17 @@ export function listDir(accessKeyId: string, accessKeySecret: string, bucket: st
     });
 }
 
-export function upImageUrl(accessKeyId: string, accessKeySecret: string, bucket: string, url: string) {
+
+
+export function upImageUrl(accessKeyId: string, accessKeySecret: string, bucket: string, url: string, path: string) {
     let client = getClient(accessKeyId, accessKeySecret, bucket)
     const Duplex = require("stream").Duplex;
     console.log("upImageUrl: " + url)
-    // 实例化双工流。
+    console.log("path: " + path)
+    // // 实例化双工流。
     let stream = new Duplex();
+
+    let extName = getFileExtendingName(url)
 
     urllib.request(url, (err: any, data: any, res: any) => {
         if (!err) {
@@ -47,8 +53,38 @@ export function upImageUrl(accessKeyId: string, accessKeySecret: string, bucket:
             stream.push(data);
             stream.push(null);
             // 填写Object完整路径，例如exampledir/exampleobject.txt。Object完整路径中不能包含Bucket名称。
+            let hashName = getHash(data, 'utf8', 'md5')
+            
+            let _path = "" + path + "/"+ hashName + extName
 
-            client.putStream("test2.png", stream).then((r: any) => console.log(r)).catch((e: any) => console.log(e));
+            console.log(_path);
+            
+            client.putStream(_path, stream).then((r: any) => console.log(r)).catch((e: any) => console.log(e));
         }
     });
+}
+
+    // 文件扩展名匹配正则
+function getFileExtendingName(filename: string) {
+    var reg = /\.[^\.]+$/;
+    var matches = reg.exec(filename);
+    if (matches) {
+      return matches[0];
+    }
+    return '';
+  }
+  
+
+
+/**
+ * 获得内容的hash值
+ * 
+ * @param {String} content 文件内容
+ * @param {String} encoding 文件的编码，例如：'utf8' 等
+ * @param {String} type hash算法，例如：'md5'、'sha1'、'sha256'、'sha512' 等
+ * @returns {String}
+ */
+
+ function getHash(content :string, encoding :string, type :string) {
+    return crypto.createHash(type).update(content, encoding).digest('hex');
 }
