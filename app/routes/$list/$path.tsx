@@ -54,11 +54,16 @@ export let loader: LoaderFunction = async ({ params }) => {
     let dirs = new Array();
     if(ossListData.prefixes != null){
       ossListData.prefixes.map((subDir: string) => {
+
         
         
-        let path = subDir.replaceAll("/", "%2f")
+        let path = subDir.replace(new RegExp("/", 'g'), () => "%2f")
+        console.log("1==============");
+        console.log(subDir);
+        console.log(path);
 
         path =  process.env.libraryPath + "/" + path
+
 
         
         dirs.push({name: subDir.split('/').slice(-2), path: path})
@@ -119,7 +124,7 @@ export default function List() {
           {
             data.ShowFile.map(file => (
               <span>
-                <Link to={"/show/" + file.url.replaceAll("/", "%2f")}
+                <Link to={"/show/" + file.url.replace(new RegExp("/", 'g'), () => "%2f")}
                 style={{
                 display: file.size == '0' ? 'none': '',
                 }}>

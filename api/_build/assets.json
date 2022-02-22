@@ -1,5 +1,5 @@
 {
-  "version": "56117cb7",
+  "version": "f441f181",
   "entry": {
     "module": "/build/entry.client-I4DAXL7S.js",
     "imports": [
@@ -21,7 +21,7 @@
       "id": "routes/$list/$path",
       "parentId": "root",
       "path": ":list/:path",
-      "module": "/build/routes/$list/$path-BEGADIU2.js",
+      "module": "/build/routes/$list/$path-DW5OTYA6.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -49,5 +49,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-56117CB7.js"
+  "url": "/build/manifest-F441F181.js"
 }
