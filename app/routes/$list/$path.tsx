@@ -5,8 +5,13 @@ import { Outlet } from "remix";
 import {listDir, upImageUrl} from "../../utils/oss.server"
 
 
+type OssDir = {
+  path: string
+  name: string
+}
+
 type OSSData = {
-  ShowDir: string[]
+  ShowDir: OssDir[]
   ShowFile: [{
     name: string
     size: string
@@ -25,9 +30,9 @@ type OSSData = {
 export let loader: LoaderFunction = async ({ params }) => {
 
   //判断是否有权
-  if(params.list  != process.env.libraryPath){
-    return redirect("/")
-  }
+  // if(params.list  != process.env.libraryPath){
+    // return redirect("/")
+  // }
   // console.log(params);
   // console.log(params.path);
 
@@ -38,17 +43,34 @@ export let loader: LoaderFunction = async ({ params }) => {
     process.env.bucket as string,
     params.path as string)
 
-    // console.log("==================");
+    // console.log("1=============");
+    
     // console.log(ossListData);
-    // console.log("==================");
+    // console.log("2=============");
+    // console.log(params);
+    // console.log("3=============");
 
+    
+    let dirs = new Array();
+    if(ossListData.prefixes != null){
+      ossListData.prefixes.map((subDir: string) => {
+        
+        
+        let path = subDir.replaceAll("/", "%2f")
+
+        path =  process.env.libraryPath + "/" + path
+
+        
+        dirs.push({name: subDir.split('/').slice(-2), path: path})
+      })
+    }
 
     
 
   let data: OSSData = {
-    ShowDir: ossListData.prefixes == null ? [] : ossListData.prefixes,
-    ShowFile: ossListData.objects,
-    // ShowDir: dirs,
+    // ShowDir: ossListData.prefixes == null ? [] : ossListData.prefixes,
+    ShowFile: ossListData.objects == null ? [] : ossListData.objects,
+    ShowDir: dirs,
     // ShowFile: files,
     url: "",
     accessKeyId: process.env.accessKeyId as string,
@@ -87,7 +109,8 @@ export default function List() {
           {
             data.ShowDir.map(subDir => (
               <div>
-                <li>{subDir}</li>
+                <Link to={"/" + subDir.path}>{subDir.name}</Link>
+                {/* <li></li> */}
               </div>
             ))
           }

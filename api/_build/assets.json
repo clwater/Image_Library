@@ -1,9 +1,9 @@
 {
-  "version": "c384026a",
+  "version": "fdaf8234",
   "entry": {
-    "module": "/build/entry.client-ZUEGV46F.js",
+    "module": "/build/entry.client-I4DAXL7S.js",
     "imports": [
-      "/build/_shared/chunk-F5JCT24J.js",
+      "/build/_shared/chunk-AVGBBZSY.js",
       "/build/_shared/chunk-E7VMOUYL.js"
     ]
   },
@@ -11,7 +11,7 @@
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-E3ZAAAON.js",
+      "module": "/build/root-ZYTZHG5M.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": false,
@@ -21,7 +21,7 @@
       "id": "routes/$list/$path",
       "parentId": "root",
       "path": ":list/:path",
-      "module": "/build/routes/$list/$path-GT4X4HG3.js",
+      "module": "/build/routes/$list/$path-CWKMVYTN.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -32,12 +32,12 @@
       "parentId": "root",
       "path": ":list",
       "index": true,
-      "module": "/build/routes/$list/index-KKTFRZCH.js",
+      "module": "/build/routes/$list/index-IN7Q5B5S.js",
       "hasAction": false,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-C384026A.js"
+  "url": "/build/manifest-FDAF8234.js"
 }
