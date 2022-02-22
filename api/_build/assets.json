@@ -1,5 +1,5 @@
 {
-  "version": "fdaf8234",
+  "version": "56117cb7",
   "entry": {
     "module": "/build/entry.client-I4DAXL7S.js",
     "imports": [
@@ -21,7 +21,7 @@
       "id": "routes/$list/$path",
       "parentId": "root",
       "path": ":list/:path",
-      "module": "/build/routes/$list/$path-CWKMVYTN.js",
+      "module": "/build/routes/$list/$path-BEGADIU2.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -32,12 +32,22 @@
       "parentId": "root",
       "path": ":list",
       "index": true,
-      "module": "/build/routes/$list/index-IN7Q5B5S.js",
+      "module": "/build/routes/$list/index-JLDNM7XM.js",
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/show/$path": {
+      "id": "routes/show/$path",
+      "parentId": "root",
+      "path": "show/:path",
+      "module": "/build/routes/show/$path-4I6EVJOE.js",
       "hasAction": false,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-FDAF8234.js"
+  "url": "/build/manifest-56117CB7.js"
 }

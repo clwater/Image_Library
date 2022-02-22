@@ -119,12 +119,12 @@ export default function List() {
           {
             data.ShowFile.map(file => (
               <span>
-              <a href={file.url} 
+                <Link to={"/show/" + file.url.replaceAll("/", "%2f")}
                 style={{
                 display: file.size == '0' ? 'none': '',
                 }}>
               <img src={file.url} alt={file.name.split('/').pop()} style={{width: '200px', height:'200px'}}/>
-              </a>
+              </Link>
               </span>
             ))
           }

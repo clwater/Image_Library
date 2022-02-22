@@ -5,7 +5,6 @@ export let loader: LoaderFunction = async ({params}) => {
     return redirect( "/" + process.env.libraryPath + "/" + process.env.baseFile + "%2f");
   }
     return redirect("/")
-
   
 }
 
