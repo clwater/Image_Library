@@ -20,7 +20,6 @@ export function getClient(accessKeyId: string, accessKeySecret: string, bucket: 
 export function listDir(accessKeyId: string, accessKeySecret: string, bucket: string, dir: string) {
 
     let client = getClient(accessKeyId, accessKeySecret, bucket)
-
     // const result = await 
 
     // result.prefixes.forEach((subDir: any) => {
@@ -55,9 +54,13 @@ export function upImageUrl(accessKeyId: string, accessKeySecret: string, bucket:
             // 填写Object完整路径，例如exampledir/exampleobject.txt。Object完整路径中不能包含Bucket名称。
             let hashName = getHash(data, 'utf8', 'md5')
             
-            let _path = "" + path + "/"+ hashName + extName
-
-            console.log(_path);
+            let _path = "" + path + hashName + extName
+            // console.log("============");
+            // console.log("_path: " + _path);
+            // console.log("path: " + path);
+            // console.log("hashName: " + hashName);
+            // console.log("extName: " + extName);
+            
             
             client.putStream(_path, stream).then((r: any) => console.log(r)).catch((e: any) => console.log(e));
         }
@@ -69,6 +72,9 @@ function getFileExtendingName(filename: string) {
     var reg = /\.[^\.]+$/;
     var matches = reg.exec(filename);
     if (matches) {
+        if(matches[0].length >=6 ){
+            return '';
+        }
       return matches[0];
     }
     return '';

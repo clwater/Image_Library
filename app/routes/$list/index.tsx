@@ -5,7 +5,7 @@ export let loader: LoaderFunction = async ({params}) => {
     return redirect("/")
   }
   
-  return redirect( "/" + process.env.libraryPath + "/" + process.env.baseFile);
+  return redirect( "/" + process.env.libraryPath + "/" + process.env.baseFile + "%2f");
 }
 
 export default function JokeRoute() {

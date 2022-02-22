@@ -1,5 +1,5 @@
 {
-  "version": "fe17ca06",
+  "version": "c384026a",
   "entry": {
     "module": "/build/entry.client-ZUEGV46F.js",
     "imports": [
@@ -21,7 +21,7 @@
       "id": "routes/$list/$path",
       "parentId": "root",
       "path": ":list/:path",
-      "module": "/build/routes/$list/$path-MDIGJZRJ.js",
+      "module": "/build/routes/$list/$path-GT4X4HG3.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -32,12 +32,12 @@
       "parentId": "root",
       "path": ":list",
       "index": true,
-      "module": "/build/routes/$list/index-VP2B5RPJ.js",
+      "module": "/build/routes/$list/index-KKTFRZCH.js",
       "hasAction": false,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-FE17CA06.js"
+  "url": "/build/manifest-C384026A.js"
 }

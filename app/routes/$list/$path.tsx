@@ -1,13 +1,16 @@
-import type { LoaderFunction, ActionFunction } from "remix";
+import { LoaderFunction, ActionFunction, Link } from "remix";
 import { useLoaderData, redirect } from "remix";
 import { Outlet } from "remix";
 
 import {listDir, upImageUrl} from "../../utils/oss.server"
 
+
 type OSSData = {
   ShowDir: string[]
   ShowFile: [{
     name: string
+    size: string
+    url: string
   }]
   // client: any
   url: string
@@ -35,9 +38,18 @@ export let loader: LoaderFunction = async ({ params }) => {
     process.env.bucket as string,
     params.path as string)
 
+    // console.log("==================");
+    // console.log(ossListData);
+    // console.log("==================");
+
+
+    
+
   let data: OSSData = {
-    ShowDir: ossListData.prefixes,
+    ShowDir: ossListData.prefixes == null ? [] : ossListData.prefixes,
     ShowFile: ossListData.objects,
+    // ShowDir: dirs,
+    // ShowFile: files,
     url: "",
     accessKeyId: process.env.accessKeyId as string,
     accessKeySecret: process.env.accessKeySecret as string,
@@ -74,14 +86,23 @@ export default function List() {
           <div>Posts</div>
           {
             data.ShowDir.map(subDir => (
-              <li>{subDir}</li>
+              <div>
+                <li>{subDir}</li>
+              </div>
             ))
           }
           <div>------------</div>
 
           {
             data.ShowFile.map(file => (
-              <li>{file.name}</li>
+              <span>
+              <a href={file.url} 
+                style={{
+                display: file.size == '0' ? 'none': '',
+                }}>
+              <img src={file.url} alt={file.name.split('/').pop()} style={{width: '200px', height:'200px'}}/>
+              </a>
+              </span>
             ))
           }
         </div>
